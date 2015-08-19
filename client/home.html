@@ -1,0 +1,28 @@
+<template name="home">
+
+<div class="row">
+    <div class="large-12">
+        <ul data-orbit>
+        {{#each tweets}}
+     <li>
+    <div>
+      <h3>{{tweet}}</h3>
+      {{#if hasImg}}
+       <center> <img class="mainimg" src="{{media.media.[0].media_url}}"> </center>
+      {{/if}}
+      
+      <img src="{{userdp}}" style="width:70px !important;float:left;" class="circle"><h5 class="username">{{name}} | {{username}}</h5>
+      {{#if currentUser}}
+<a class="waves-effect waves-light btn" id="remove" href="#">x</a> 
+{{/if}}
+    </div>
+  </li>
+  {{/each}}
+        </ul>
+    </div>
+</div>
+
+{{#if currentUser}}
+<a class="waves-effect waves-light btn" id="del" href="#">DELETE all</a>  <a href="#" id="logout">Logout</a>
+{{/if}}
+  </template>

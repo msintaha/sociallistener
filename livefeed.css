@@ -1,0 +1,32 @@
+/* CSS declarations go here */
+
+body{
+	background-image:url('/back.jpg') ;
+	margin: 3%;
+	margin-top: 55px;
+	color:white;
+	background-size: cover;
+	margin-bottom: 0;
+}
+
+h3,h5{
+	color: white;
+}
+#cont{
+	margin: 3%;
+}
+.slider ul.slides{
+	background: transparent !important;
+}
+
+.slider ul.indicators li.indicator-item{
+	display: none!important;
+}
+.circle{
+	border:1px solid transparent;
+	border-radius: 35px;
+}
+.mainimg{
+	width: auto !important;
+	height: 400px !important;
+}
