@@ -1,6 +1,6 @@
 if (Meteor.isServer) {
   Meteor.startup(function () {
-     
+
     // code to run on server at startup
 	 var Twit = Meteor.npmRequire('twit');
 
@@ -11,38 +11,38 @@ if (Meteor.isServer) {
         access_token_secret:  'xFdxY1bV2aRaxvy5AJ16i7kCxsVNe6MzThTr5QgJxJzwJ'
     });
 
-var stream = T.stream('statuses/filter', { track: '#ThingsThatITakeCreditFor', language:'en', limit:1});
+var stream = T.stream('statuses/filter', { track: '#AMAsaturdays', language:'en', limit:1});
 stream.on('tweet', Meteor.bindEnvironment(function (tweet) {
- //  console.log(tweet);
+
   Tweets.insert({
     tweet:tweet.text,
     media:tweet.entities,
     name:tweet.user.name,
     username:tweet.user.screen_name,
-    userdp:tweet.user.profile_image_url
+    userdp:tweet.user.profile_image_url_https
   });
 }));
 
-var Instagram = Meteor.npmRequire('instagram-node-lib');
+// var Instagram = Meteor.npmRequire('instagram-node-lib');
 
-Instagram.set('client_id', 'eb92efd7f42342178f31a0502a04467a');
-Instagram.set('client_secret', 'a10ceddc9d714afb86d74908607727d9');
+// Instagram.set('client_id', 'eb92efd7f42342178f31a0502a04467a');
+// Instagram.set('client_secret', 'a10ceddc9d714afb86d74908607727d9');
 
-Instagram.set('callback_url', 'https://webfeed.fwd.wf/callback');
-Instagram.set('redirect_uri', 'https://webfeed.fwd.wf');
+// Instagram.set('callback_url', 'https://webfeed.fwd.wf/callback');
+// Instagram.set('redirect_uri', 'https://webfeed.fwd.wf');
 
-Instagram.tags.recent({ name: 'webabulous',
- complete: function(data) {
-      //console.log(data);
-      }
-  });
+// Instagram.tags.recent({ name: 'webabulous',
+//  complete: function(data) {
+//       //console.log(data);
+//       }
+//   });
 
-Instagram.tags.subscribe({
-  object_id: 'webable'
-});
-Instagram.tags.subscribe({
-  object_id: 'webabulous'
-});
+// Instagram.tags.subscribe({
+//   object_id: 'webable'
+// });
+// Instagram.tags.subscribe({
+//   object_id: 'webabulous'
+// });
 
 });
   Meteor.methods({

@@ -1,0 +1,37 @@
+<template name="dashboard">
+{{#if currentUser}}
+
+<nav class="top-bar sticky" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">WebAbulous Feed</a></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+     </ul>
+     <section class="top-bar-section">
+         <ul class="left">
+      <li><a href="#" id="del">Delete ALL Tweets</a></li>
+      <li><a href="/home" target="_blank">Main Page</a></li>
+       <li><a href="#" id="logout">Logout</a></li>
+    </ul>
+  </section> 
+  </nav>
+  <br><br>
+	<ul class="dash">
+	{{#each tweets}}
+	<li>
+		<div class="panel">	
+		  <h5>{{tweet}}</h5>
+		  <p>{{name}} | @{{username}}</p>
+		  {{#if hasImg}}
+		      <center> <img class="mainimg" src="{{media.media.[0].media_url}}"> </center>
+	      {{/if}}
+	      <a href="#" class="button tiny round" id="remove">Delete Tweet</a>
+	</div>
+
+		</li>
+	{{/each}}
+	</ul>
+{{/if}}
+
+</template>

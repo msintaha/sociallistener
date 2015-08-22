@@ -4,7 +4,7 @@ Template.login.events({
 		var userName=tmpl.find('#login-username').value;
 		var passWord=tmpl.find('#login-password').value;
 		Meteor.loginWithPassword(userName,passWord);
-		Router.go('/home');
+		Router.go('/dashboard');
 	}
 });
 Template.register.events({
@@ -19,7 +19,7 @@ Template.register.events({
 		}
 		  else{
 		    console.log('success!');
-			Router.go('/home');}
+			Router.go('/dashboard');}
 		});
 		
 	}
@@ -33,11 +33,23 @@ Template.home.events({
         Meteor.call("removeAlltweets",function(err){
       console.log('removed tweets');
     });
-           Meteor.call("removeAllinsta",function(err){
-      console.log('removed insta');
+    //        Meteor.call("removeAllinsta",function(err){
+    //   console.log('removed insta');
+    // });
+    }
+
+});
+Template.dashboard.events({
+	  'click #del': function(event) {
+        event.preventDefault();
+        Meteor.call("removeAlltweets",function(err){
+      console.log('removed tweets');
     });
+    //        Meteor.call("removeAllinsta",function(err){
+    //   console.log('removed insta');
+    // });
     },
-    'click #logout':function(evt){
+'click #logout':function(evt){
 		evt.preventDefault();
 		Meteor.logout();
 	},
@@ -47,5 +59,4 @@ Template.home.events({
 			console.log(id);
 			Tweets.remove({_id:id});
 	}
-
-});
+})
