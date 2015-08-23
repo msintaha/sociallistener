@@ -18,7 +18,13 @@ h1,h2,h3,h4,h5,p,body{
 h1,h3,h4,h5{
 	color: white;
 }
-
+h1{
+	font-size: 2.5vw;
+}
+h2{
+	font-size:2vw;
+	color: white;
+}
 #cont{
 	margin: 3%;
 }
@@ -111,7 +117,7 @@ h1,h3,h4,h5{
   opacity: 0;
   font-size: 20px;
   font-weight: normal;
-
+ 
 }
 
 #footer{
@@ -128,14 +134,14 @@ h1,h3,h4,h5{
 a{ color: white !important;}
 #without-img > #col2{
 	position: absolute;
-	top:27%;
+	top:23%;
 	max-width: 60rem !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
 }
 #with-img > #col1{
 	position: absolute;
-	top:13%;
+	top:10%;
 	max-width: 60rem !important;
 }
 .tile-item--active {

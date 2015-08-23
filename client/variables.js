@@ -21,6 +21,11 @@
     hasImg:function(){
       var imgpres=Tweets.findOne({_id:this._id}).media.media;
      return imgpres;
+    },
+    tracking:function(){
+      var c=Hash.find().count();
+    var theTag=Hash.find().fetch()[c-1].hashtag;
+    return theTag;
     }
  });
 
@@ -75,7 +80,7 @@ $(document).ready(function () {
   var changeTileItem = function ($tile) {
 
     var transition = transitions[getRandomInt(0, transitionsLength - 1)];
-    var randomTime = getRandomInt(5500, 9000);
+    var randomTime = getRandomInt(3500, 7000);
 
     var $active = $tile.find('.tile-item--active');
 
@@ -102,7 +107,11 @@ $(document).ready(function () {
      $newTileTemp = $newTile.eq(c);
       c++;
       if(c==itemsLength){
-        c=c-3;
+       if(itemsLength<7){
+        c=c-2;
+       } else{
+        c=c-8;
+       }
       } else{
         $newTile = $newTileTemp;
       }
@@ -122,7 +131,7 @@ $(document).ready(function () {
 
     setTimeout(function () {
       changeTileItem($tile);
-    }, randomTime);
+    }, 4000);
 
   }
 

@@ -1,17 +1,23 @@
 if (Meteor.isServer) {
   Meteor.startup(function () {
-
+    var c=Hash.find().count();
+if(c==0){
+    Hash.insert({hashtag:'#Webabulous'});
+  }  
+    var theTag=Hash.find().fetch()[c-1].hashtag;
+  
+//Hash.find
     // code to run on server at startup
 	 var Twit = Meteor.npmRequire('twit');
 
     var T = new Twit({
-        consumer_key:         '4GDRSmXazgVxZnvK6I3BuQ2I3', // API key
-        consumer_secret:      'BJExD82N4QM8s8Ejy9ulAfgvx2A5Yds9gYsHoM3W4vRXqtJKmx', // API secret
+        consumer_key:         'ClkspMmRMOTAJvysssMpylY56', // API key
+        consumer_secret:      '34qxajeFKcPTvMocYT5xMdOTZrQohbOAO1btgpRihJuA1tGxlM', // API secret
         access_token:         '138086873-jMTpMLwOTPKRRDQ9MnlgUvwIollZTadG3i9ZnRlz', 
         access_token_secret:  'xFdxY1bV2aRaxvy5AJ16i7kCxsVNe6MzThTr5QgJxJzwJ'
     });
-
-var stream = T.stream('statuses/filter', { track: '#AMAsaturdays', language:'en', limit:1});
+console.log(theTag);
+var stream = T.stream('statuses/filter', { track: theTag, language:'en', limit:1});
 stream.on('tweet', Meteor.bindEnvironment(function (tweet) {
 
   Tweets.insert({
@@ -49,8 +55,11 @@ stream.on('tweet', Meteor.bindEnvironment(function (tweet) {
     'removeAlltweets':function(){
       Tweets.remove({});
     },
-    'removeAllinsta':function(){
-      Insta.remove({});
+    'removeAlltags':function(){
+      Hash.remove({});
+    },
+    'updateTag':function(tag){
+      Hash.update({hashtag:tag});
     }
   });
 }

@@ -25,6 +25,17 @@ Template.register.events({
 	}
 });
 
+Template.hashtag.events({
+	'click #done':function(evt,tmpl){
+		evt.preventDefault();
+		var tag=tmpl.find('#hash').value;
+		var id=Hash.find().fetch()[Hash.find().count()-1]._id;
+		  Hash.update(id, {
+        $set: {hashtag: tag}
+      });
+		Router.go('/dashboard');
+	}
+});
 
 Template.home.events({
 
@@ -45,6 +56,7 @@ Template.dashboard.events({
         Meteor.call("removeAlltweets",function(err){
       console.log('removed tweets');
     });
+         
     //        Meteor.call("removeAllinsta",function(err){
     //   console.log('removed insta');
     // });

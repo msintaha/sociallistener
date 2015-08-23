@@ -5,8 +5,9 @@ Router.route('/', function () {
 Router.map(function(){
 	this.route('home', {path: '/home'});
     this.route('login', {path: '/login'});
-    this.route('register', {path: '/register'});
+  this.route('register', {path: '/register'});
     this.route('dashboard', {path: '/dashboard'});
+    this.route('hashtag', {path: '/hashtag'});
 // var Instagram = Meteor.npmRequire('instagram-node-lib');
 // this.route('/callback', {where: 'server'}).get(function (req, res) {
 //   var handshake = Instagram.subscriptions.handshake(req, res);//remove this and you'll get apisubscriptionerror
